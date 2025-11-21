@@ -16,7 +16,7 @@ const UserSelection = ({ onSelectChat }) => {
         type="text"
         placeholder="Enter recipient's username"
         value={recipient}
-        onChange={(e) => setRecipient(e.value)}
+        onChange={(e) => setRecipient(e.target.value)}
       />
       <button onClick={handleStartChat}>Start Chat</button>
     </div>
