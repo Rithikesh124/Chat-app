@@ -14,6 +14,7 @@ const Login = ({ onLogin, apiUrl }) => {
       const response = await axios.post(`${apiUrl}${endpoint}`, { username, password });
       setMessage(response.data.message || 'Success!');
       if (!isRegister) {
+        // On successful login, pass the username to the App component
         onLogin(response.data.username);
       }
     } catch (error) {
@@ -49,34 +50,4 @@ const Login = ({ onLogin, apiUrl }) => {
   );
 };
 
-export default Login;```
-
-#### `src/components/UserSelection.jsx`
-
-```jsx
-import React, { useState } from 'react';
-
-const UserSelection = ({ onSelectChat }) => {
-  const [recipient, setRecipient] = useState('');
-
-  const handleStartChat = () => {
-    if (recipient.trim()) {
-      onSelectChat(recipient.trim());
-    }
-  };
-
-  return (
-    <div className="form-container">
-      <h2>Select a User to Chat With</h2>
-      <input
-        type="text"
-        placeholder="Enter recipient's username"
-        value={recipient}
-        onChange={(e) => setRecipient(e.target.value)}
-      />
-      <button onClick={handleStartChat}>Start Chat</button>
-    </div>
-  );
-};
-
-export default UserSelection;
+export default Login;
